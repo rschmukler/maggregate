@@ -4,32 +4,34 @@ Simple aggregation pipeline builder for MongoDb. Inspired by the eloquent
 
 ## Example Usage
 
-    var Maggregate = require('maggregate');
+```js
+var Maggregate = require('maggregate');
 
-    require('mongodb').connect(uri, function (err, db) {
-      if (err) return handleError(err);
+require('mongodb').connect(uri, function (err, db) {
+  if (err) return handleError(err);
 
-      // get a collection
-      var collection = db.collection('artists');
+  // get a collection
+  var collection = db.collection('artists');
 
-      // Create an instance of an aggregation
-      var aggregation = new Maggregate(collection);
+  // Create an instance of an aggregation
+  var aggregation = new Maggregate(collection);
 
-      // Build and execute
-      aggregation
-        .match({'works.medium': 'paint'})
-        .unwind('$works')
-        .match({'works.medium': 'paint'})
-        .group({_id: '$_id', paintingCount: { $sum: 1 }});
-        .exec(cb);
+  // Build and execute
+  aggregation
+    .match({'works.medium': 'paint'})
+    .unwind('$works')
+    .match({'works.medium': 'paint'})
+    .group({_id: '$_id', paintingCount: { $sum: 1 }});
+    .exec(cb);
 
-      // Or with a callback...
-      var aggregation = new Maggregate(collection);
-      aggregation
-        .match({'works.medium': 'paint'})
-        .unwind('$works')
-        .match({'works.medium': 'paint'})
-        .group({_id: '$_id', paintingCount: { $sum: 1 }}, cb);
+  // Or with a callback...
+  var aggregation = new Maggregate(collection);
+  aggregation
+    .match({'works.medium': 'paint'})
+    .unwind('$works')
+    .match({'works.medium': 'paint'})
+    .group({_id: '$_id', paintingCount: { $sum: 1 }}, cb);
+```
 
 ## Supported Operations
 
@@ -60,33 +62,38 @@ to the operators specified above.
 
 change the collection on the aggregation. returns the chainable interface.
 
-     var writers = db.collection('writers');
-     aggregation.collection(writers).group({...});
-
+```js
+var writers = db.collection('writers');
+aggregation.collection(writers).group({...});
+```
 #### exec
 
 Executes the aggregation. Takes a `callback` in the form of `function(err,
 resp)`
 
-     aggregation.group({...}).exec(function(err, resp) {
-       //Do stuff with it.
-     });
+```js
+aggregation.group({...}).exec(function(err, resp) {
+  //Do stuff with it.
+});
+```
 
 #### wrap (Model)
 
 Wraps the db response using the given model. Simply passes the response into the
 given constructor. Returns the chainable interface.
 
-     var AnalyticsReport = require('./analytics-report-model.js')
-     aggregation.wrap(AnalyticsReport);
-     
-     // ...
-     // Bunch of queries to make a complex analytics report from the collection
-     // ...
+```js
+var AnalyticsReport = require('./analytics-report-model.js')
+aggregation.wrap(AnalyticsReport);
 
-     aggregation.exec(function(err, report) {
-       report instanceof AnalyticsReport === true // true
-     });
+// ...
+// Bunch of queries to make a complex analytics report from the collection
+// ...
+
+aggregation.exec(function(err, report) {
+  report instanceof AnalyticsReport === true // true
+});
+```
 
 # License
 
