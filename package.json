@@ -20,5 +20,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rschmukler/maggregate/issues"
+  },
+  "devDependencies": {
+    "expect.js": "~0.2.0"
   }
 }
