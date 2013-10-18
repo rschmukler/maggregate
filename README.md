@@ -56,7 +56,7 @@ Briefly, the operations are:
 Maggregate provides a few methods to help use the built aggregation, in addition
 to the operators specified above.
 
-#### collection <newCol>
+#### collection (newCol)
 
 change the collection on the aggregation. returns the chainable interface.
 
@@ -72,7 +72,7 @@ resp)`
        //Do stuff with it.
      });
 
-#### wrap <Model>
+#### wrap (Model)
 
 Wraps the db response using the given model. Simply passes the response into the
 given constructor. Returns the chainable interface.
@@ -92,7 +92,7 @@ given constructor. Returns the chainable interface.
 
 (The MIT License)
 
-Copyright (c) 2013 [Ryan Schmukler](ryan@slingingcode.com)
+Copyright (c) 2013 [Ryan Schmukler](mailto:ryan@slingingcode.com)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
