@@ -2,7 +2,7 @@
   "name": "maggregate",
   "version": "0.1.0",
   "description": "Mongo aggregation builder",
-  "main": "index.js",
+  "main": "lib/maggregate.js",
   "scripts": {
     "test": "mocha"
   },
