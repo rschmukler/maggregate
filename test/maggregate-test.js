@@ -1,6 +1,6 @@
 var expect = require('expect.js'),
-    Maggregate = require('../index.js');
-  
+    Maggregate = require('../');
+
 var fakeCollection = {};
 
 describe('Maggregate', function() {
@@ -76,7 +76,7 @@ describe('Maggregate', function() {
       aggregate = new Maggregate(fakeCollection);
     });
     it('calls aggregate on the collection', function(done) {
-      var callback = function(err, result) { 
+      var callback = function(err, result) {
         expect(err).to.be(null);
         expect(result).to.be(5);
         done();
@@ -91,7 +91,7 @@ describe('Maggregate', function() {
       var Person = function(age) {
         this.age = age;
       }
-      var callback = function(err, person) { 
+      var callback = function(err, person) {
         expect(person).to.be.a(Person);
         expect(person.age).to.be(5);
         done();
