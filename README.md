@@ -33,6 +33,14 @@ require('mongodb').connect(uri, function (err, db) {
     .group({_id: '$_id', paintingCount: { $sum: 1 }}, cb);
 ```
 
+Maggregate also supports [co](http://github.com/visionmedia/co)
+
+```js
+var aggregation = new Maggregate(collection);
+
+var result = yield aggregation.match('works.medium': 'paint').unwind('$works');
+```
+
 ## Supported Operations
 
 Currently, all mongo aggregation pipeline operators are supported. To learn how
