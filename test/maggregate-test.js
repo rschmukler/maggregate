@@ -76,7 +76,7 @@ describe('Maggregate', function() {
       aggregate = new Maggregate(fakeCollection);
     });
     it('calls aggregate on the collection', function(done) {
-      var callback = function(err, result) { 
+      var callback = function(err, result) {
         expect(err).to.be(null);
         expect(result).to.be(5);
         done();
@@ -90,8 +90,8 @@ describe('Maggregate', function() {
     it('wraps the response if a wrapper was specified', function(done) {
       var Person = function(age) {
         this.age = age;
-      }
-      var callback = function(err, person) { 
+      };
+      var callback = function(err, person) {
         expect(person).to.be.a(Person);
         expect(person.age).to.be(5);
         done();
@@ -100,6 +100,9 @@ describe('Maggregate', function() {
         cb(null, 5);
       };
       aggregate.wrap(Person).exec(callback);
+    });
+
+    it('supports harmony features', function() {
     });
   });
 });
