@@ -101,8 +101,5 @@ describe('Maggregate', function() {
       };
       aggregate.wrap(Person).exec(callback);
     });
-
-    it('supports harmony features', function() {
-    });
   });
 });
